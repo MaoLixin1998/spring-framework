@@ -1,12 +1,13 @@
-package com.mx;
+package com.mlx;
 
-public class User {
+import org.springframework.beans.factory.InitializingBean;
 
-
+public class User implements InitializingBean {
 	private String id;
 	private String userName;
 
 	public User() {
+		System.out.println("User 构造器");
 	}
 
 	public User(String id, String userName) {
@@ -15,7 +16,7 @@ public class User {
 	}
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id) {
@@ -36,5 +37,10 @@ public class User {
 				"id='" + id + '\'' +
 				", userName='" + userName + '\'' +
 				'}';
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("User afterPropertiesSet");
 	}
 }
