@@ -600,13 +600,20 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// Check for listener beans and register them.
 				// 注册应用的监听器，就是注册实现了ApplicationListener接口的监听器的Bean
 				registerListeners();
-				/**
-				 * 构造器在此执行
-				 */
+
 				// Instantiate all remaining (non-lazy-init) singletons.
+				/*
+				TODO
+				初始化所有剩下非懒加载的单例Bean
+				初始化创建非懒加载方式的单例Bean实例（未设置属性）
+				填充属性
+				初始化方法调用（比如afterPropertiesSet方法、init-method方法）
+				调用BeanPostProcessor（后置处理器）对实例bean进行后置处理
+				 */
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				//完成context刷新。主要是调用LifecycleProcessor的onRefresh()方法，并发布事件（ContextRefreshedEvent                           ）
 				finishRefresh();
 			}
 
